@@ -12,15 +12,15 @@ void Led::check()
 	if (millis() - _prev > _next)
 	{
 		_prev = millis();
-		_next = random(20, 40);
+		_next = 15;
 		run();
 	}
 };
 
 void Led::run()
 {
-	int8_t noise = random(-8, 8);
-	int8_t frac = (_target - _strength) * 0.1;
+	int8_t noise = random(-13, 13);
+	float frac = (_target - _strength) * 0.15;
 	_strength = _strength + noise + frac;
 
 	target();
@@ -39,9 +39,9 @@ void Led::limit()
 void Led::target()
 {
 	_goal_counter++;
-	if (_goal_counter > 10)
+	if (_goal_counter > 12)
 	{
 		_goal_counter = 0;
-		_target = random(150, 255);
+		_target = random(180, 255);
 	}
 }

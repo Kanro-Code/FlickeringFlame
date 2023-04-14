@@ -13,7 +13,7 @@ void Magnet::check()
 	if (millis() - prev > next)
 	{
 		prev = millis();
-		next = (on) ? random(15, 55) : random(400, 1000);
+		next = (on) ? random(15, 25) : random(300, 600);
 		toggle();
 	}
 }
