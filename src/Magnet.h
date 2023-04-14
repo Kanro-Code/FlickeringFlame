@@ -3,14 +3,16 @@
 
 class Magnet
 {
-	private:
-		uint8_t m_pin;
-		bool m_on = false;
-		unsigned long m_next;
-	public:
-		Magnet(uint8_t pin);
-		void check();
-		void toggle();
+private:
+	uint8_t pin;
+	unsigned long prev;
+	uint16_t next;
+	bool on = false;
+
+public:
+	Magnet(uint8_t pin);
+	void check();
+	void toggle();
 };
 
 #endif

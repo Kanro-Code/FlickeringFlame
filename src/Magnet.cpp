@@ -2,30 +2,24 @@
 #include "Magnet.h"
 
 // Constructor
-Magnet::Magnet(uint8_t pin)
+Magnet::Magnet(uint8_t _pin)
 {
-	m_pin = pin;
-	pinMode(m_pin, OUTPUT);
+	pin = _pin;
+	pinMode(pin, OUTPUT);
 }
 
 void Magnet::check()
 {
-	if (m_next < millis())
+	if (millis() - prev > next)
 	{
+		prev = millis();
+		next = (on) ? random(15, 55) : random(400, 1000);
 		toggle();
-		if (m_on)
-		{
-			m_next = millis() + random(15, 35);
-		}
-		else
-		{
-			m_next = millis() + random(400, 1000);
-		}
 	}
 }
 
 void Magnet::toggle()
 {
-	m_on = !m_on;
-	digitalWrite(m_pin, m_on);
+	on = !on;
+	digitalWrite(pin, on);
 }
